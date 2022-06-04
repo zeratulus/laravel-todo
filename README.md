@@ -1,10 +1,11 @@
 
 How to run
-  - Make .env file with your DB configurations.
-  - Run in console: composer install
+  - Make .env file with your DB configuration
+  - composer install
+  - npm i
   - php artisan migrate
-  - Run in console: npm run build
-  - 
+  - npm run dev
+  - php artisan serve
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
