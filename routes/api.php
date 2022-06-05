@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('api')->group(function () {
     Route::resource('tasks', TaskController::class);
+    Route::post('tasks/{id}/check', [TaskController::class, 'check']);
 });

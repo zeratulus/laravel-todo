@@ -2,14 +2,14 @@
     <div>
         <h3 class="text-center">Create Task</h3>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-sm-12">
                 <form @submit.prevent="addTask">
-                    <div class="form-group mb-2">
+                    <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" v-model="task.title">
                     </div>
 
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center mt-2">
                         <button type="submit" class="btn btn-primary">Create</button>
                     </div>
                 </form>

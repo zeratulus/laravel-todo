@@ -2,13 +2,25 @@
     <div>
         <h3 class="text-center">Edit Task</h3>
         <div class="row">
-            <div class="col-md-6">
-                <form @submit.prevent="updateTask">
+            <div class="col-sm-12">
+
+                <div v-if="isLoading" class="d-flex justify-content-center">
+                    <div class="spinner-grow" role="status"></div>
+                </div>
+
+                <form v-if="!isLoading" @submit.prevent="updateTask">
                     <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" v-model="task.title">
+                        <label for="input-title">Title</label>
+                        <input type="text" class="form-control" v-model="task.title" id="input-title">
                     </div>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" v-model="task.checked" id="input-checked">
+                        <label class="form-check-label" for="input-checked">Checked</label>
+                    </div>
+
+                    <div class="d-flex justify-content-center mt-2">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -23,14 +35,16 @@ export default {
                 title: '',
                 user_id: 0,
                 checked: false
-            }
+            },
+            isLoading: true,
         }
     },
     created() {
         this.axios
             .get(`http://localhost:8000/api/tasks/${this.$route.params.id}`)
             .then((res) => {
-                this.product = res.data;
+                this.task = res.data;
+                this.isLoading = false;
             });
     },
     methods: {

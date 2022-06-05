@@ -34,6 +34,13 @@ class TaskController extends Controller
         return response()->json('Task updated!');
     }
 
+    public function check($id)
+    {
+        $task = Task::find($id);
+        $task->update(['checked' => true]);
+        return response()->json('Task checked updated!');
+    }
+
     public function destroy($id)
     {
         $task = Task::find($id);

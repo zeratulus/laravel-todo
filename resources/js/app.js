@@ -13,6 +13,7 @@ import VueAxios from 'vue-axios';
 import VueRouter from 'vue-router';
 import axios from 'axios';
 import { routes } from './routes';
+import moment from 'moment';
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,6 +40,12 @@ Vue.use(VueAxios, axios);
 const router = new VueRouter({
     mode: 'history',
     routes: routes
+});
+
+Vue.filter('formatDateCIS', function(value) {
+    if (value) {
+        return moment(String(value)).format('DD.MM.YYYY hh:mm')
+    }
 });
 
 const app = new Vue({
